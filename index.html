@@ -3,94 +3,368 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio Claudio Lanches</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <link rel="icon" href="icon.jpg" type="image/x-icon">
-    <style>
-        body{
-            margin: 0px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            background-color: #cc8d24;
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-        }
-        div{
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            color: #ae1a0c;
-        }
-        div h1{
-            text-shadow: 
-                2px 2px 0px black,   /* Borda preta à direita e abaixo */
-                -2px -2px 0px black, /* Borda preta à esquerda e acima */
-                2px -2px 0px black,  /* Borda preta à direita e acima */
-                -2px 2px 0px black;  /* Borda preta à esquerda e abaixo */
-        }
-        #img{
-            display: flex;
-            justify-content: center;
-            
-            flex-direction: column;
-        }
-        #img img{
-            width: 95%;
-        }
-        footer{
-            display: flex;
-            width: 100%;
-            flex-direction: column;
-            justify-content: space-around;
-            align-items: center;
-            text-align: center;
-        }
-        .whatsapp-button {
-            background-color: #1ca34e; /* Cor verde do WhatsApp */
-            color: white;
-            font-size: 18px;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            margin-bottom: 5px;
-        }
-
-        .whatsapp-button:hover {
-            background-color: #128C7E; /* Cor verde escuro do WhatsApp */
-        }
-    </style>
-    <title>Claudio Lanches</title>
 </head>
 <body>
-    <div>
-        <h1>CARDÁPIO<br>CLAUDIO LANCHES</h1>
-        <br>
-        <h3>HORÁRIO DE ATENDIMENTO: 18:00 ÀS 23:00</h3>
-        <h5>POR GENTILEZA PEDIDOS NO CAIXA<br></h5>
-        <div><a href="https://wa.me/5543996243007?text=Olá!" class="whatsapp-button" target="_blank">
-            Clique aqui para nosso WhatsApp </a>
+    <!-- Modal de Aviso (Mostra na inicialização da página) -->
+    <div class="modal fade" id="avisoModal" tabindex="-1" aria-labelledby="avisoModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="avisoModalLabel">AVISO!!!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Clique no nome do lanche para visualizar a descrição.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tela">
+        <header>
+        <h1>Claudio Lanches</h1>
+        <h3>Cardápio</h3>
+    </header>
+    <br>
+    <section>
+        <h3 id="box">Horário de Atendimento<br>18:00 AS 23:00</h1>
+        <a id="box" href="https://wa.me/5543996243007?text=Olá!" class="whatsapp-button" target="_blank">
+            Clique aqui para nosso WhatsApp<br><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-whatsapp" viewBox="0 0 16 16">
+  <path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/>
+</svg></a>
+        <div id="box">
+            <div>
+                <img src="img/car.png" alt="">
+                <img src="img/concre.png" alt="">
+                <img src="img/suprema.png" alt="">
+                <img src="img/rbs.png" alt="">
+            </div>
+        </div>
+    </section>
+    
+<div class="container mt-4">
+    <!-- Navegação por tabs -->
+     <img src="img/cel.png" width="100%" style="margin-bottom: 5px;" alt="">
+     <img src="img/otica.png" width="100%" style="margin-top: 5px; margin-bottom: 10px;" alt="">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="cachorro-tab" data-bs-toggle="tab" data-bs-target="#cachorro" type="button" role="tab" aria-controls="cachorro" aria-selected="true">Cachorro</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="lanche-tab" data-bs-toggle="tab" data-bs-target="#lanche" type="button" role="tab" aria-controls="lanche" aria-selected="false">Lanche</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="bebidas-tab" data-bs-toggle="tab" data-bs-target="#bebidas" type="button" role="tab" aria-controls="bebidas" aria-selected="false">Bebidas</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="adicionais-tab" data-bs-toggle="tab" data-bs-target="#adicionais" type="button" role="tab" aria-controls="adicionais" aria-selected="false">Adicionais</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="porcoes-tab" data-bs-toggle="tab" data-bs-target="#porcoes" type="button" role="tab" aria-controls="porcoes" aria-selected="false">Porções</button>
+        </li>
+    </ul>
+    
+    <!-- Conteúdo das tabs -->
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="cachorro" role="tabpanel" aria-labelledby="cachorro-tab">
+            <aside>
+                <div>Simples</div>
+                <span id="s">R$ 14,00</span>
+            </aside>
+            <aside>
+                <div>Simples Duplo</div>
+                <span id="sd">R$ 16,00</span>
+            </aside>
+            <aside>
+                <div>Simples PM</div>
+                <span id="spm">R$ 20,00</span>
+            </aside>
+            <aside>
+                <div>Simples duplo PM</div>
+                <span id="sdpm">R$ 22,00</span>
+            </aside>
+            <aside>
+                <div>Frango</div>
+                <span id="f">R$ 28,00</span>
+            </aside>
+            <aside>
+                <div>Calabresa</div>
+                <span id="calab">R$ 28,00</span>
+            </aside>
+            <aside>
+                <div>Bacon</div>
+                <span id="bacon">R$ 33,00</span>
+            </aside>
+            <aside>
+                <div>Misto</div>
+                <span id="misto">R$ 37,00</span>
+            </aside>
+            <aside>
+                <div>B/F</div>
+                <span id="bf">R$ 37,00</span>
+            </aside>
+            <aside>
+                <div>B/C</div>
+                <span id="bc">R$ 37,00</span>
+            </aside>
+            <aside>
+                <div>Especial</div>
+                <span id="spc">R$ 38,00</span>
+            </aside>
+        </div>
+
+
+        <div class="tab-pane fade" id="lanche" role="tabpanel" aria-labelledby="lanche-tab">
+            <aside>
+                <div>Misto Quente</div>
+                <span id="mistoq">R$ 14,00</span>
+            </aside>
+            <aside>
+                <div>X Salada</div>
+                <span id="salad">R$ 19,00</span>
+            </aside>
+            <aside>
+                <div>X Burguer</div>
+                <span id="burguer">R$ 16,00</span>
+            </aside>
+            <aside>
+                <div>X Galinha</div>
+                <span id="galinha">R$ 39,00</span>
+            </aside>
+            <aside>
+                <div>X Egg</div>
+                <span id="egg">R$ 21,00</span>
+            </aside>
+            <aside>
+                <div>X Calabresa</div>
+                <span id="xcalab">R$ 37,00</span>
+            </aside>
+            <aside>
+                <div>X Frango</div>
+                <span id="xfrango">R$ 37,00</span>
+            </aside>
+            <aside>
+                <div>X Bacon</div>
+                <span id="xbacon">R$ 38,00</span>
+            </aside>
+            <aside>
+                <div>X Begg</div>
+                <span id="xbegg"">R$ 40,00</span>
+            </aside>
+            <aside>
+                <div>X BF</div>
+                <span id="xbf">R$ 43,00</span>
+            </aside>
+            <aside>
+                <div>X BC</div>
+                <span id="xbc">R$ 43,00</span>
+            </aside>
+            <aside>
+                <div>X Misto</div>
+                <span id="xmisto">R$ 43,00</span>
+            </aside>
+            <aside>
+                <div>X Tudo</div>
+                <span id="xtudo">R$ 58,00</span>
+            </aside>
+            <aside>
+                <div>X Vegetariano</div>
+                <span id="xvegetariano">R$ 19,00</span>
+            </aside>
+            <aside>
+                <div>X Fit</div>
+                <span id="xfit">R$ 16,00</span>
+            </aside>
+        </div>
+        <div class="tab-pane fade" id="bebidas" role="tabpanel" aria-labelledby="bebidas-tab">
+            <aside id="bebida">
+                <div>Não Alcoólico</div>
+                <aside>
+                    <div>Suco valle Frut</div>
+                    <span id="suco-vale">R$ 7,00</span>
+                </aside>
+                <aside>
+                    <div>Valle Lata</div>
+                    <span id="lata-vale">R$ 7,00</span>
+                </aside>
+                <aside>
+                    <div>Monster</div>
+                    <span id="monster">R$ 13,00</span>
+                </aside>
+                <aside>
+                    <div>Tubaína</div>
+                    <span id="tubaina">R$ 5,00</span>
+                </aside>
+                <aside>
+                    <div>Refri mini</div>
+                    <span id="refri-mini">R$ 3,00</span>
+                </aside>
+                <aside>
+                    <div>Refri 290ML</div>
+                    <span id="refri-290">R$ 4,00</span>
+                </aside>
+                <aside>
+                    <div>Refri Lata</div>
+                    <span id="refri-lata">R$ 5,00</span>
+                </aside>
+                <aside>
+                    <div>Refri 600ML</div>
+                    <span id="refri-600">R$ 8,00</span>
+                </aside>
+                <aside>
+                    <div>Refri Litro</div>
+                    <span id="refri-litro">R$ 9,00</span>
+                </aside>
+                <aside>
+                    <div>Sodinha</div>
+                    <span id="sodinha">R$ 3,00</span>
+                </aside>
+                <aside>
+                    <div>Água 500ML (c/s gás)</div>
+                    <span id="agua">R$ 4,00</span>
+                </aside>
+                <aside>
+                    <div>Natu 300ML</div>
+                    <span id="Natu-300">R$ 9,00</span>
+                </aside>
+                <aside>
+                    <div>Natu 500ML</div>
+                    <span id="natu-500">R$ 11,00</span>
+                </aside>
+                <aside>
+                    <div>Natu 900ML</div>
+                    <span id="natu-900">R$ 16,00</span>
+                </aside>
+            </aside>
+            <aside id="bebida"">
+                <div>Alcoólico</div>
+                <aside id="bebida">
+                    <div style="font-size: 25px;"><strong>Cerveja Lata</strong></div>
+                    <aside>
+                        <div>Brahma</div>
+                        <span id="brahma">R$ 6,00</span>
+                    </aside>
+                    <aside>
+                        <div>Shol</div>
+                        <span id="skol">R$ 6,00</span>
+                    </aside>
+                    <aside>
+                        <div>Antarctica</div>
+                        <span id="boa">R$ 6,00</span>
+                    </aside>
+                    <aside>
+                        <div>Amstel</div>
+                        <span id="amstel">R$ 6,00</span>
+                    </aside>
+                    <aside>
+                        <div>Original</div>
+                        <span id="original"">R$ 6,00</span>
+                    </aside>
+                    <aside>
+                        <div>Glacial</div>
+                        <span id="glacial"">R$ 5,00</span>
+                    </aside>
+                </aside>
+                <aside id="bebida">
+                    <div style="font-size: 25px;"><strong>Long Neck</strong></div>
+                    <aside>
+                        <div>Sol</div>
+                        <span id="sol">R$ 10,00</span>
+                    </aside>
+                    <aside>
+                        <div>Heineken</div>
+                        <span id="heineken">R$ 10,00</span>
+                    </aside>
+                </aside>
+                <aside id="bebida">
+                    <div style="font-size: 25px;"><strong>Cerveja Zero</strong></div>
+                    <aside>
+                        <div>Heineken Zero</div>
+                        <span id="zero-heineken">R$ 10,00</span>
+                    </aside>
+                    <aside>
+                        <div>Brahma Zero</div>
+                        <span id="zero-brahma"">R$ 7,00</span>
+                    </aside>
+                </aside>
+            </aside>
+        </div>
+        <div class="tab-pane fade" id="adicionais" role="tabpanel" aria-labelledby="adicionais-tab">
+            <aside>
+                <div>Frango</div>
+                <span id="adf">R$ 8,00</span>
+            </aside>
+            <aside>
+                <div>Bacon</div>
+                <span id="adb">R$ 8,00</span>
+            </aside>
+            <aside>
+                <div>Calabresa</div>
+                <span id="adc">R$ 8,00</span>
+            </aside>
+            <aside>
+                <div>Salsicha</div>
+                <span id="advina">R$ 2,00</span>
+            </aside>
+            <aside>
+                <div>Hambúrguer</div>
+                <span id="adham">R$ 3,00</span>
+            </aside>
+            <aside>
+                <div>Presunto / Musarella</div>
+                <span id="adpm">R$ 8,00</span>
+            </aside>
+        </div>
+        <div class="tab-pane fade" id="porcoes" role="tabpanel" aria-labelledby="porcoes-tab">
+            <aside>
+                <div>Frango Desfiado 1Kg</div>
+                <span id="porf">R$ 40,00</span>
+            </aside>
+            <aside>
+                <div>Calabresa 1Kg</div>
+                <span id="porc">R$ 35,00</span>
+            </aside>
+            <aside>
+                <div>Enroladinho de PM</div>
+                <span id="enroladinho">R$ 10,00</span>
+            </aside>
         </div>
     </div>
-    <div id="img">
-        <img src="IMG-20250527-WA0050~2.jpg" alt=""><!--capa-->
-        <img src="IMG-20250527-WA0049~2.jpg" alt=""><!--cachorro quente-->
-        <img src="IMG-20250527-WA0044~2.jpg" alt=""><!--lanche1-->
-        <img src="IMG-20250527-WA0048~2.jpg" alt=""><!--lanche2-->
-        <img src="IMG-20250527-WA0047~2.jpg" alt=""><!--porcao-->
-        <img src="IMG-20250527-WA0045~2.jpg" alt=""><!--bebidas naturais-->
-        <img src="IMG-20250527-WA0046~2.jpg" alt=""><!--bebidas alcoolicas-->
-
+</div>
     </div>
-
+    <!-- Modal de Descrição -->
+    <div class="modal fade" id="itemModal" tabindex="-1" aria-labelledby="itemModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="itemModalLabel">Descrição do Item</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="itemDescription">
+            <!-- A descrição será inserida aqui via JavaScript -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <footer>
-        <p>Por dentesdesabre100@gmail.com<br>&copy;Todos os direitos reservados.</p>
+        <p style="margin: 0px;" id="ano"></p>
+        <p style="margin: 0px;">Desenvolvido por Gabtraste</p>
+        <a href="https://github.com/Gabtrasteon" target="_blank">
+            <img src="img/git.svg" alt="">
+        </a>
     </footer>
 </body>
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
 </html>
